@@ -1,1 +1,189 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6200ea;
+    color: white;
+    padding: 20px;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .app-name {
+    font-size: 1.5em;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: space-between; /* Aligns cards side by side */
+    max-width: 1200px; /* Optional: limit width for better layout */
+    margin: 20px auto; /* Center the container */
+  }
+  
+  /* Card styles */
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px; /* Margin between the cards */
+    flex: 1; /* Allow cards to grow equally */
+    animation: fadeIn 0.5s; /* Animation for card appearance */
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Form input styles */
+  .form-inputs {
+    margin: 0; /* Remove margin since this is within the card */
+  }
+  
+  /* Form row styles */
+  .form-row {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus {
+    border-color: #6200ea; /* Focus color */
+    outline: none;
+  }
+  
+  /* Button styles */
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    :disabled {
+      background-color: light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
+      color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+      border-color: light-dark(rgba(118, 118, 118));
+    }
+  }
+
+  .form-buttons:disabled {
+    background-color: light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
+    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+    border-color: light-dark(rgba(118, 118, 118));
+  }
+  
+  button {
+    background-color: #6200ea; /* Button primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #3700b3; /* Darker shade on hover */
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+  
+  .email-value {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+  }
+  
+  .radio-group {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Center items vertically */
+    margin: 10px 0; /* Space between groups */
+  
+    label {
+        display: inline;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      
+      input {
+        width: auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s;
+      }
+  }
+  
+  .radio-group label {
+    margin-left: 10px;
+  }
+  
+  
+  .add-icon, .remove-icon {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 20px; /* Adjust size of the icons */
+    margin-left: 10px; /* Space between input and icon */
+    color: #007bff; /* Primary color */
+  }
+  
+  .remove-icon {
+    color: #dc3545; /* Danger color for remove icon */
+  }
+  
+  .add-icon:hover, .remove-icon:hover {
+    color: #0056b3; /* Darker shade on hover for add */
+  }
+  
+  .remove-icon:hover {
+    color: #c82333; /* Darker shade on hover for remove */
+  }
+  
+  input:disabled {
+    background-color: #e9ecef; 
+    color: #6c757d; 
+    cursor: not-allowed; 
+    opacity: 0.65;
+  }
+
+  .checkbox-card {
+    margin-left: 10px;
+  }

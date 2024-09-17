@@ -1,0 +1,118 @@
+<div class="form-container">
+
+    <div class="card registration-card">
+        <h2>Register</h2>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-inputs">
+
+            <div class="form-row">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" formControlName="fname">
+                <div *ngIf="registerForm.get('fname')?.errors && registerForm.get('fname')?.touched" class="error">
+                    <div *ngIf="registerForm.get('fname')?.errors?.['required']">First is required.</div>
+                    <div *ngIf="registerForm.get('fname')?.hasError('minlength')">
+                        First Name must be at least {{ registerForm.get('fname')?.errors?.['minlength'].requiredLength
+                        }}
+                        characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" formControlName="lname">
+                <div *ngIf="registerForm.get('lname')?.invalid && registerForm.get('lname')?.touched" class="error">
+                    Last Name is required.
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="email">Email</label>
+                <input type="email" id="email" formControlName="email" (input)="onEmailChange($event)">
+                <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+                    <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+                    <div *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+                    <div *ngIf="registerForm.get('email')?.errors?.['emailTaken']">This email is already taken.</div>
+                    <div *ngIf="registerForm.get('email')?.errors?.['netcrackerDomain']">Email must be from
+                        'netcracker.com'.</div>
+                </div>
+            </div>
+
+            <!-- <div formArrayName="languages">
+                <h3>Languages</h3>
+                <div *ngFor="let language of languages.controls; let i = index" [formGroupName]="i">
+                  <div class="form-row">
+                    <label for="language">Language</label>
+                    <input type="text" formControlName="name" id="language-{{ i }}">
+                    <i class="fas fa-minus-circle remove-icon" (click)="removeLanguage(i)" title="Remove"></i>
+                  </div>
+                </div>
+                <i class="fas fa-plus-circle add-icon" (click)="addLanguage()" title="Add Language"></i>
+            </div> -->
+
+            <div class="form-row">
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password">
+                <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                    class="error">
+                    <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+                    <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6
+                        characters
+                        long.</div>
+                </div>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" [disabled]="registerForm.invalid">Register</button>
+                <button type="button" (click)="onReset()">Reset</button>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="card checkbox-card">
+        <h2>Options</h2>
+        <div class="radio-group">
+            <label>
+              <input type="checkbox" id="fname-disable" name="fname-disable" (change)="toggleDisable('fname')">
+              Disable First Name
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label for="newFname">New First Name</label>
+            <input type="text" id="newFname" [(ngModel)]="newFname" name="newFname">
+        </div>
+
+        <div class="form-row">
+            <label for="fnameMinLength">First Name Min Length</label>
+            <input type="number" id="fnameMinLength" [(ngModel)]="fnameMinLength" name="fnameMinLength">
+        </div>
+
+        <button type="button" (click)="updateNames()">Update</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [formControl]="nameControl"]>
+  
+    <div *ngIf="nameControl.invalid && nameControl.touched">
+      <span *ngIf="nameControl?.errors?.['required']">Name is required.</span>
+      <span *ngIf="nameControl?.errors?.['minlength']">Name must be at least 3 characters long.</span>
+    </div>
+  
+    <button type="submit" [disabled]="nameControl.invalid">Submit</button>
+</form> -->

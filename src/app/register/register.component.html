@@ -1,0 +1,48 @@
+<div class="card">
+  <h2>Register</h2>
+
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
+
+    <!-- First Name -->
+    <div class="form-row">
+      <label for="fname">First Name</label>
+      <input type="text" name="fname" ngModel required #fname="ngModel">
+      <div *ngIf="fname.invalid && fname.touched" class="error">
+        First Name is required.
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-row">
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lname" ngModel required #lname="ngModel">
+      <div *ngIf="lname.invalid && lname.touched" class="error">
+        Last Name is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-row">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" ngModel required email #email="ngModel">
+      <div *ngIf="email.invalid && email.touched" class="error">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-row">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" ngModel required minlength="6" #password="ngModel">
+      <div *ngIf="password.invalid && password.touched" class="error">
+        <div *ngIf="password.errors?.['required']">Password is required.</div>
+        <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters long.</div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+
+  </form>
+</div>
